@@ -25,3 +25,44 @@ void AWorldCameraActor::Tick(float DeltaTime)
 
 }
 
+void AWorldCameraActor::MoveActor(FVector& Amount)
+{
+}
+
+void AWorldCameraActor::GetMovementVectors(float DeltaTime, FVector& ForwardMovementVector, FVector& HorizontalMovementVector)
+{
+}
+
+void AWorldCameraActor::CalculateForwardMovement(float DeltaTime, FVector& ForwardMovement)
+{
+}
+
+FVector AWorldCameraActor::CalculateHorizontalMovement(float DeltaTime)
+{
+	return FVector();
+}
+
+void AWorldCameraActor::CalculateAveragePlayerShipOffset(TArray<APlayerShip*> PlayerShips, float& Offset)
+{
+}
+
+void AWorldCameraActor::MoveCameraOffset(FVector Amount)
+{
+}
+
+void AWorldCameraActor::SetPlayerViewCamera(APlayerController* Target)
+{
+}
+
+float AWorldCameraActor::GetDistanceTravelled()
+{
+	return 0.0f;
+}
+
+void AWorldCameraActor::SetScreenDimensions(float Height, float Width)
+{
+}
+
+void AWorldCameraActor::GetScreenDimensions(float& Height, float& Width)
+{
+}

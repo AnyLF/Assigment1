@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PlayerShip.h"
 #include "WorldCameraActor.generated.h"
 
 UCLASS()
@@ -23,4 +24,51 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+public:
+
+    UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
+    float ScrollSpeed;
+
+    UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
+    float MaxHorizontalOffset;
+
+    UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
+    float LastKnowPlayerShipOffset;
+
+    UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
+    FVector2D ScreenDimensions;
+
+    UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
+    FVector StartLocation;
+
+public:
+    UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
+    void MoveActor(FVector& Amount);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "BirdOfPrey")
+    void GetMovementVectors(float DeltaTime, FVector& ForwardMovementVector, FVector& HorizontalMovementVector);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "BirdOfPrey")
+    void CalculateForwardMovement(float DeltaTime, FVector& ForwardMovement);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "BirdOfPrey")
+    FVector CalculateHorizontalMovement(float DeltaTime);
+
+    UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
+    void CalculateAveragePlayerShipOffset(TArray<APlayerShip*> PlayerShips, float& Offset);
+
+    UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
+    void MoveCameraOffset(FVector Amount);
+
+    UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
+    void SetPlayerViewCamera(APlayerController* Target);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "BirdOfPrey")
+    float GetDistanceTravelled();
+
+    UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
+    void SetScreenDimensions(float Height, float Width);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "BirdOfPrey")
+    void GetScreenDimensions(float& Height, float& Width);
 };
